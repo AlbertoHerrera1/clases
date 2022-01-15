@@ -1,10 +1,11 @@
-from utilidades import Resultado, mensaje_error, helper, tarea
+from utilidades import Resultado, mensaje_error, helper, template_sencillo, template_iterable
 
 
 def inversion(uuid, deseo_ayudar):
     def decorador(f):
         def contenedora(monto_inicial, interes):
             resultados = []
+            excepcion = None
             error = False
             for i in range(1, 10):
                 total = 0
@@ -16,13 +17,15 @@ def inversion(uuid, deseo_ayudar):
                 except Exception as e:
                     mensaje_error(e)
                     error = True
+                    excepcion = str(e)
                     break
-            helper(resultados, 'inversion', uuid, error, deseo_ayudar)
+            helper(resultados, 'inversion', uuid, error=error, deseo=deseo_ayudar, excepcion=excepcion)
         return contenedora
     return decorador
 
-def califica_suma(f, uuid, deseo_ayudar):
+def califica_suma_test(f, uuid, deseo_ayudar):
     resultados = []
+    excepcion = None
     error = False
     for i in range(5):
         for j in range(-2, 2):
@@ -34,14 +37,38 @@ def califica_suma(f, uuid, deseo_ayudar):
             except Exception as e:
                 mensaje_error(e)
                 error = True
+                excepcion = str(e)
                 break
         if error:
             break
     
-    helper(resultados, tarea+'suma', uuid, error, deseo_ayudar)
+    helper(resultados, 't1-', 'suma_test', uuid, error=error, deseo=deseo_ayudar, excepcion=excepcion)
 
-def califica_resta(f, uuid, deseo_ayudar):
+
+def califica_suma(f, uuid, deseo_ayudar):
     resultados = []
+    excepcion = None
+    error = False
+    for i in range(5):
+        for j in range(-2, 2):
+            try:
+                resultado_suma = f(i, j)
+                resultado_real = i + j
+                estado = resultado_suma==resultado_real
+                resultados.append(Resultado((i, j), resultado_real, resultado_suma, estado).__dict__)
+            except Exception as e:
+                mensaje_error(e)
+                error = True
+                excepcion = str(e)
+                break
+        if error:
+            break
+    
+    helper(resultados, 't2-', 'suma', uuid, error=error, deseo=deseo_ayudar, excepcion=excepcion)
+
+def califica_resta_test(f, uuid, deseo_ayudar):
+    resultados = []
+    excepcion = None
     error = False
     for i in range(5):
         for j in range(-2, 2):
@@ -53,28 +80,46 @@ def califica_resta(f, uuid, deseo_ayudar):
             except Exception as e:
                 mensaje_error(e)
                 error = True
+                excepcion = str(e)
                 break
         if error:
             break
-    helper(resultados, tarea+'resta', uuid, error, deseo_ayudar)
+    helper(resultados, 't1-', 'resta_test', uuid, error=error, deseo=deseo_ayudar, excepcion=excepcion)
 
-def califica_saludo(f, uuid, deseo_ayudar):
-    error = False
+
+def califica_resta(f, uuid, deseo_ayudar):
     resultados = []
-    try:
-        r = f()
-        esperado = "Hola, mundo!"
-        estado = r==esperado
-        resultados.append(Resultado(None, esperado, r, estado).__dict__)
-    except Exception as e:
-        mensaje_error(e)
-        error = True
+    excepcion = None
+    error = False
+    for i in range(5):
+        for j in range(-2, 2):
+            try:
+                resultado_resta = f(i, j)
+                resultado_real = i - j
+                estado = resultado_real==resultado_resta
+                resultados.append(Resultado((i, j), resultado_real, resultado_resta, estado).__dict__)
+            except Exception as e:
+                mensaje_error(e)
+                error = True
+                excepcion = str(e)
+                break
+        if error:
+            break
+    helper(resultados, 't2-', 'resta', uuid, error=error, deseo=deseo_ayudar, excepcion=excepcion)
 
-    helper(resultados, tarea+'saludo', uuid, error=error, deseo=deseo_ayudar)
+
+@template_sencillo("Hola, mundo!", 'saludo_test', 't1-')
+def califica_saludo_test(f, uuid, deseo_ayudar):
+    return f
+
+@template_sencillo("Hola, mundo!", 'saludo', 't2-')
+def califica_saludo(f, uuid, deseo_ayudar):
+    return f
 
 def califica_multiplicacion(f, uuid, deseo_ayudar):
     error = False
     resultados = []
+    excepcion = None
     for i in range(5):
         for j in range(-2, 2):
             try:
@@ -85,15 +130,37 @@ def califica_multiplicacion(f, uuid, deseo_ayudar):
             except Exception as e:
                 mensaje_error(e)
                 error = True
+                excepcion = str(e)
                 break
         if error:
             break
-    helper(resultados, tarea+'multiplicacion', uuid, error, deseo_ayudar)
+    helper(resultados, 't2-', 'multiplicacion', uuid, error=error, deseo=deseo_ayudar, excepcion=excepcion)
 
-
-def califica_division(f, uuid, deseo_ayudar):
+def califica_multiplicacion(f, uuid, deseo_ayudar):
     error = False
     resultados = []
+    excepcion = None
+    for i in range(5):
+        for j in range(-2, 2):
+            try:
+                resultado_resta = f(i, j)
+                resultado_real = i * j
+                estado = resultado_real==resultado_resta
+                resultados.append(Resultado((i, j), resultado_real, resultado_resta, estado).__dict__)
+            except Exception as e:
+                mensaje_error(e)
+                error = True
+                excepcion = str(e)
+                break
+        if error:
+            break
+    helper(resultados, 't2-', 'multiplicacion', uuid, error=error, deseo=deseo_ayudar, excepcion=excepcion)
+
+
+def califica_division_cuidadosa(f, uuid, deseo_ayudar):
+    error = False
+    resultados = []
+    excepcion = None
     for i in range(-2, 2):
         for j in range(1, 6):
             try:
@@ -104,14 +171,16 @@ def califica_division(f, uuid, deseo_ayudar):
             except Exception as e:
                 mensaje_error(e)
                 error = True
+                excepcion = str(e)
                 break
         if error:
             break
-    helper(resultados, tarea+'division', uuid, error, deseo_ayudar)
+    helper(resultados, 't2-', 'division', uuid, error=error, deseo=deseo_ayudar, excepcion=excepcion)
 
 def califica_al_cuadrado(f, uuid, deseo_ayudar):
     error = False
     resultados = []
+    excepcion = None
     for j in range(1, 6):
         try:
             resultado_resta = f(j)
@@ -121,14 +190,16 @@ def califica_al_cuadrado(f, uuid, deseo_ayudar):
         except Exception as e:
             mensaje_error(e)
             error = True
+            excepcion = str(e)
             break
         
-    helper(resultados, tarea+'al_cuadrado', uuid, error, deseo_ayudar)
+    helper(resultados, 't2-', 'al_cuadrado', uuid, error=error, deseo=deseo_ayudar, excepcion=excepcion)
 
 
 def califica_potencia(f, uuid, deseo_ayudar):
     error = False
     resultados = []
+    excepcion = None
     for i in range(-2, 2):
         for j in range(1, 6):
             try:
@@ -139,15 +210,17 @@ def califica_potencia(f, uuid, deseo_ayudar):
             except Exception as e:
                 mensaje_error(e)
                 error = True
+                excepcion = str(e)
                 break
         if error:
             break
-    helper(resultados, tarea+'potencia', uuid, error, deseo_ayudar)
+    helper(resultados, 't2-', 'potencia', uuid, error=error, deseo=deseo_ayudar, excepcion=excepcion)
 
 
 def califica_suma_mas_dos(f, uuid, deseo_ayudar):
     error = False
     resultados = []
+    excepcion = None
     for i in range(-2, 2):
         for j in range(1, 6):
             try:
@@ -159,14 +232,16 @@ def califica_suma_mas_dos(f, uuid, deseo_ayudar):
             except Exception as e:
                 mensaje_error(e)
                 error = True
+                excepcion = str(e)
                 break
         if error:
             break
-    helper(resultados, tarea+'suma_mas_dos', uuid, error, deseo_ayudar)
+    helper(resultados, 't2-', 'suma_mas_dos', uuid, error=error, deseo=deseo_ayudar, excepcion=excepcion)
 
 def califica_resta_menos_veinte(f, uuid, deseo_ayudar):
     error = False
     resultados = []
+    excepcion = None
     for i in range(-2, 2):
         for j in range(1, 6):
             try:
@@ -178,133 +253,405 @@ def califica_resta_menos_veinte(f, uuid, deseo_ayudar):
             except Exception as e:
                 mensaje_error(e)
                 error = True
+                excepcion = str(e)
                 break
         if error:
             break
-    helper(resultados, tarea+'resta_menos_veinte', uuid, error, deseo_ayudar)
+    helper(resultados, 't2-', 'resta_menos_veinte', uuid, error=error, deseo=deseo_ayudar, excepcion=excepcion)
 
+@template_iterable([
+    [[1], 1],
+    [[2], 2],
+    [[-3], 3],
+    [[-3.6], 3.6],
+    [[-100000], 100000]
+], 'valor_absoluto', 't2-')
+def califica_valor_absoluto(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+    [[3.4], 3],
+    [["2"], 2],
+    [[-3.2], -3],
+    [["3"], 3]
+], 'convertir_a_entero', 't2-')
+def califica_convertir_a_entero(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+    [[3], 3.0],
+    [[1.2], 1.2],
+    [["2.2"], 2.2]
+], 'convertir_a_float', 't2-')
+def califica_convertir_a_float(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+    [[3.5, 1], 3.5],
+    [[100.9, 1], 100.9],
+    [[-3.689, 2], -3.69]
+], 'redondear_a_n_digitos', 't2-')
+def califica_redondear_a_n_digitos(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+    [[6,3], 0],
+    [[1,3], 1],
+    [[100,67], 33],
+    [[23,5], 3]
+], 'modulo', 't2-')
+def califica_modulo(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+    [[100, 10], 10.0],
+    [[1010, 10], 101.0],
+    [[34, 34], 1.0],
+    [[-6, 4], -2],
+    [[.5, 1], 0.0],
+], 'división_entera', 't2-')
+def califica_division_entera(f, uuid, deseo_ayudar):
+    return f
+
+@template_sencillo("HOLA, MUNDO", "en_mayusculas", 't2-', ["hola, mundo"])
 def califica_en_mayusculas(f, uuid, deseo_ayudar):
-    error = False
-    resultados = []
-    try:
-        r = f("hola, mundo")
-        esperado = "HOLA, MUNDO"
-        estado = r==esperado
-        resultados.append(Resultado(None, esperado, r, estado).__dict__)
-    except Exception as e:
-        mensaje_error(e)
-        error = True
+    return f
 
-    helper(resultados, tarea+'en_mayusculas', uuid, error=error, deseo=deseo_ayudar)
-
+@template_sencillo("hola, mundo", 'en_minusculas', 't2-', ["HOLA, MUNDO"])
 def califica_en_minusculas(f, uuid, deseo_ayudar):
-    error = False
-    resultados = []
-    try:
-        r = f("HOLA, MUNDO")
-        esperado = "hola, mundo"
-        estado = r==esperado
-        resultados.append(Resultado(None, esperado, r, estado).__dict__)
-    except Exception as e:
-        mensaje_error(e)
-        error = True
+    return f
 
-    helper(resultados, tarea+'en_minusculas', uuid, error=error, deseo=deseo_ayudar)
-
+@template_iterable([
+        [["Hola"], 'H'],
+        [["mundo",], 'm'],
+        [["me"], 'm'],
+        [["gusta"], 'g'],
+        [["este"], 'e'],
+        [["curso"], 'c'],
+        [["y las"], 'y'],
+        [["'t2-'s"], 't'],
+        [["están"], 'e'],
+        [["geniales"], 'g']
+    ], 'primer_letra', 't2-')
 def califica_primer_letra(f, uuid, deseo_ayudar):
-    error = False
-    resultados = []
-    palabras = [
-        "Hola",
-        "mundo",
-        "me",
-        "gusta",
-        "este",
-        "curso",
-        "y las",
-        "tareas",
-        "están",
-        "geniales"
-    ]
-    try:
-        for palabra in palabras:
-            letra_obtenida = f(palabra)
-            letra_esperada = palabra[0]
-            estado = letra_obtenida == letra_esperada
-            resultados.append(Resultado(palabra, letra_esperada, letra_obtenida, estado).__dict__)
-    except Exception as e:
-        mensaje_error(e)
-        error = True
-    
-    helper(resultados, tarea+'primer_letra', uuid, error=error, deseo=deseo_ayudar)
+    return f
 
+@template_iterable([
+        [["Esta",], 't'],
+        [["'t2-'",], 'e'],
+        [["está",], 't'],
+        [["curiosa",], 's'],
+        [["eso de",], 'd'],
+        [["usar",], 'a'],
+        [["índices",], 'e'],
+        [["negativos",], 'o'],
+        [["es",], 'e'],
+        [["nuevo",], 'v']
+    ], 'penultima_letra', 't2-')
 def califica_penultima_letra(f, uuid, deseo_ayudar):
-    error = False
-    resultados = []
-    palabras = [
-        "Esta",
-        "tarea",
-        "está",
-        "curiosa",
-        "eso de",
-        "usar",
-        "índices",
-        "negativos",
-        "es",
-        "nuevo"
-    ]
-    try:
-        for palabra in palabras:
-            letra_obtenida = f(palabra)
-            letra_esperada = palabra[-2]
-            estado = letra_obtenida == letra_esperada
-            resultados.append(Resultado(palabra, letra_esperada, letra_obtenida, estado).__dict__)
-    except Exception as e:
-        mensaje_error(e)
-        error = True
-    
-    helper(resultados, tarea+'penultima_letra', uuid, error=error, deseo=deseo_ayudar)
+    return f
 
-
+@template_iterable([
+        [[1,2,3], "a = 1, b = 2 y c = 3"],
+        [[4,5,6], "a = 4, b = 5 y c = 6"],
+        [[7,8,9], "a = 7, b = 8 y c = 9"],
+        [[10, 11, 12], "a = 10, b = 11 y c = 12"],
+        [[13, 14, 15], "a = 13, b = 14 y c = 15"]
+    ], 'mostrar_numeros', 't2-')
 def califica_mostrar_numeros(f, uuid, deseo_ayudar):
-    error = False
-    resultados = []
-    numeros = [
-        (1,2,3),
-        (4,5,6),
-        (7,8,9),
-        (10, 11, 12),
-        (13, 14, 15)
-    ]
-    try:
-        for tupla in numeros:
-            resultado_obtenido = f(tupla[0], tupla[1], tupla[2])
-            resultado_esperado = f"a = {tupla[0]}, b = {tupla[1]} y c = {tupla[2]}"
-            estado = resultado_obtenido == resultado_esperado
-            resultados.append(Resultado(tupla, resultado_esperado, resultado_obtenido, estado).__dict__)
-    except Exception as e:
-        mensaje_error(e)
-        error = True
-    
-    helper(resultados, tarea+'mostrar_numeros', uuid, error=error, deseo=deseo_ayudar)
+    return f
 
+@template_iterable([
+        [["Hola, ", "mundo"], 'Hola, mundo'],
+        [["Estoy ", "aprendiendo"], "Estoy aprendiendo"],
+        [["a ", "programar"], 'a programar'],
+        [["en ", "Python"], 'en Python']
+    ], 'concatenar_cadenas', 't2-')
 def califica_concatenar_cadenas(f, uuid, deseo_ayudar):
-    error = False
-    resultados = []
-    cadenas = [
-        ("Hola, ", "mundo"),
-        ("Estoy ", "aprendiendo"),
-        ("a ", "programar"),
-        ("en ", "Python")
-    ]
-    try:
-        for tupla in cadenas:
-            resultado_obtenido = f(tupla[0], tupla[1])
-            resultado_esperado = tupla[0] + tupla[1]
-            estado = resultado_obtenido == resultado_esperado
-            resultados.append(Resultado(tupla, resultado_esperado, resultado_obtenido, estado).__dict__)
-    except Exception as e:
-        mensaje_error(e)
-        error = True
+    return f
+
+@template_iterable([
+    [[10], 98.10000000000001],
+    [[34], 333.54],
+    [[54], 529.74],
+    [[98], 961.38],
+    [[8.3], 81.42300000000002],
+], 'peso_de_un_cuerpo', 't2-')
+def califica_peso_de_un_cuerpo(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+    [[30, 25], 1.2],
+    [[456, 234], 1.9487179487179487],
+    [[89, 23], 3.869565217391304],
+    [[1567, 1268], 1.2358044164037856],
+    [[45, 87], 0.5172413793103449],
+], 'calculo_de_velocidad_constante', 't2-')
+def califica_calculo_de_velocidad_constante(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+    [[30, 30, 100], 3030],
+    [[20, 10, 130], 1320],
+    [[45, 89, 78], 6987],
+    [[487, 65, 10], 1137],
+    [[1000, 10, 10], 1100],
+], 'calculo_de_velocidad_con_aceleracion', 't2-')
+def califica_calculo_de_velocidad_con_aceleracion(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+    [[0, 10, 60, 10], 18600.0],
+    [[10, 20, 120, 5], 38410.0],
+    [[20, 30, 180, 100], 1625420.0],
+    [[0, 5, 30, 5], 2400.0],
+], 'calculo_de_posicion_de_un_cuerpo_en_movimiento_con_aceleracion_constante', 't2-')
+def califica_calculo_de_posicion_de_un_cuerpo_en_movimiento_con_aceleracion_constante(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+    [[50.0, 1.60, 110.0, 1.90, 80.0, 1.50], 28.51923989432646],
+    [[55.0, 1.50, 130.0, 1.60, 85.0, 1.55], 36.86850237985123],
+    [[65.0, 1.65, 150.0, 1.50, 83.0, 1.62], 40.722685977705304],
+    [[30.0, 1.30, 87.0, 1.80, 40.0, 1.32], 22.52005742681733],
+    [[85.0, 1.80, 67.0, 1.40, 80.0, 1.56], 31.097117055603018],
+], 'promedio_inidice_masa_corporal', 't2-')
+def califica_promedio_inidice_masa_corporal(f, uuid, deseo_ayudar):
+    return f
+####################################################################################################
+#                                       Tarea 3
+####################################################################################################
+
+@template_sencillo([], 'creacion_de_lista_vacia', 't3-')
+def califica_creacion_de_lista_vacia(f, uuid, deseo_ayudar):
+    return f
+
+@template_sencillo((), 'creacion_de_una_tupla_vacia', 't3-')
+def califica_creacion_de_una_tupla_vacia(f, uuid, deseo_ayudar):
+    return f
     
-    helper(resultados, tarea+'concatenar_cadenas', uuid, error=error, deseo=deseo_ayudar)
+@template_sencillo({}, 'creacion_de_un_diccionario_vacio', 't3-')    
+def califica_creacion_de_un_diccionario_vacio(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+        ([[]], 0),
+        ([[1,2,3]], 3),
+        ([[1,2,3,4,5,6,7,8,9,10]], 10),
+        ([list(range(100))], 100)
+    ], 'obtener_longitu_de_una_lista', 't3-')
+def califica_obtener_longitud_de_una_lista(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+        ([()], 0),
+        ([(1,2,3)], 3),
+        ([(1,2,3,4,5,6,7,8,9,10)], 10),
+        ([tuple(range(100))], 100)
+    ], 'obtener_longitud_de_una_tupla', 't3-')
+def califica_obtener_longitud_de_una_tupla(f, uuid, deseo_ayudar):
+    return f
+
+
+@template_iterable([
+        ([{}], 0),
+        ([{"Uno": 1,"Dos": 2, "Tres": 3}], 3),
+        ([{"Dia": "Martes"}], 1),
+        ([{"Curso": "Python de la a a la z", "Fecha": "17 de enero"}], 2)
+    ], 'obtener_longitud_de_un_diccionario', 't3-')
+def califica_obtener_longitud_de_un_diccionario(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+        ([1], [1]),
+        ([{"Uno": 1,"Dos": 2, "Tres": 3}], [{"Uno": 1,"Dos": 2, "Tres": 3}]),
+        ([{"Dia": "Martes"}], [{"Dia": "Martes"}]),
+        ([{"Curso": "Python de la a a la z", "Fecha": "17 de enero"}], [{"Curso": "Python de la a a la z", "Fecha": "17 de enero"}])
+    ], 'creacion_de_una_lista_con_exactamente_un_elemento', 't3-')
+def califica_creacion_de_una_lista_con_exactamente_un_elemento(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+        ([1], (1,)),
+        ([{"Uno": 1,"Dos": 2, "Tres": 3}], ({"Uno": 1,"Dos": 2, "Tres": 3},)),
+        ([{"Dia": "Martes"}], ({"Dia": "Martes"},)),
+        ([{"Curso": "Python de la a a la z", "Fecha": "17 de enero"}], ({"Curso": "Python de la a a la z", "Fecha": "17 de enero"},))
+    ], 'creacion_de_una_tupla_con_exactamente_un_elemento', 't3-')
+def califica_creacion_de_una_tupla_con_exactamente_un_elemento(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+        ([27], {'edad': 27}), 
+        ([60], {'edad': 60}) 
+    ], 'creacion_de_un_diccionario_con_clave_edad', 't3-')
+def califica_creacion_de_un_diccionario_con_clave_edad(f, uuid, deseo_ayudar):
+    return f
+
+
+@template_sencillo(['a', 'b', 'c'], 'creacion_de_una_lista_con_tres_elementos', 't3-')
+def califica_creacion_de_una_lista_con_tres_elementos(f, uuid, deseo_ayudar):
+    return f
+
+@template_sencillo(('a', '1', 'b'), 'creacion_de_una_tupla_con_tres_elementos', 't3-')
+def califica_creacion_de_una_tupla_con_tres_elementos(f, uuid, deseo_ayudar):
+    return f
+
+@template_sencillo(6, 'acceder_al_elemento_5', 't3-')
+def califica_acceder_al_elemento_5(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+            [[27], 26], 
+            [[60], 59],
+            [[101], 100],
+        ], 'acceder_al_ultimo_elemento_de_una_tupla_en_rango', 't3-')
+def califica_acceder_al_ultimo_elemento_de_una_tupla_en_rango(f, uuid, deseo_ayudar):
+        return f
+
+
+@template_sencillo({1,2,3,4,5}, 'conjunto_con_elementos_del_1_al_5', 't3-')
+def califica_conjunto_con_elementos_del_1_al_5(f, uuid, deseo_ayudar):
+    return f
+    
+@template_iterable([
+    [['Hola', 'Aloha', 'Saludos'], {'Hola', 'Aloha', 'Saludos'}]
+], 'conjunto_con_tres_palabras', 't3-')
+def califica_conjunto_con_tres_palabras(f, uuid, deseo_ayudar):
+    return f
+
+
+@template_sencillo({
+    'estado': 'Activo',
+    'datos': {
+        'curso': 'Python de la A a la Z',
+        'tareas': 3
+    }
+}, 'creacion_de_diccionario_dentro_de_otro_diccionario', 't3-')
+def califica_creacion_de_diccionario_dentro_de_otro_diccionario(f, uuid, deseo_ayudar):
+    return f
+
+@template_sencillo([
+    {"pais": "México", "nombre oficial": "Estados Unidos Mexicanos"},
+    {"pais": "Estados Unidos", "nombre oficial": "Estados Unidos de América"}
+], 'creacion_de_lista_de_diccionarios', 't3-')
+def califica_creacion_de_lista_de_diccionarios(f, uuid, deseo_ayudar):
+    return f
+
+@template_sencillo({
+        "tarea1": [
+            10, 10, 8
+        ],
+        "tarea2": [
+            10, 8, 7
+        ]
+    }, 'creacion_de_diccionario_con_listas', 't3-')
+def califica_creacion_de_diccionario_con_listas(f, uuid, deseo_ayudar):
+    return f
+
+####################################################################################################
+#                                       Tarea 4
+####################################################################################################
+
+@template_iterable([
+    [["Hola", "Hola"], "Son iguales"],
+    [['Hola', 'Hola'], "Son iguales"],
+    [["Hola", "hola"], "Son diferentes"],
+    [["Mi nombre es:", "Mi nombre es"], "Son diferentes"],
+    [["Tengo ... años", "Tengo --- años"], "Son diferentes"],
+], 'son_iguales', 't4-')
+def califica_son_iguales(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+    [[2], True],
+    [[201], False],
+    [[3333], False],
+    [[1234], True],
+    [[209872], True],
+], 'es_par', 't4-')
+def califica_es_par(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+    [[17], "Eres menor de edad"],
+    [[18], "Eres mayor de edad"],
+    [[12], "Eres menor de edad"],
+    [[81], "Eres mayor de edad"],
+    [[99], "Eres mayor de edad"],
+], 'mayor_de_edad', 't4-')
+def califica_mayor_de_edad(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+    [[2,2], 1.0],
+    [[4,2], 2.0],
+    [[10,5], 2.0],
+    [[23,0], "No puedo dividir entre cero"],
+    [[1567,0], "No puedo dividir entre cero"],
+], 'division_cuidadosa', 't4-')
+def califica_division_cuidadosa(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+    [[3,2], "El primero es mayor"],
+    [[29834,209], "El primero es mayor"],
+    [[1,2], "El segundo es mayor"],
+    [[89,89], "Son iguales"],
+    [[2,2], "Son iguales"],
+], 'es_mayor', 't4-')
+def califica_es_mayor(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+    [[21], "Pertenece"],
+    [[30], "Pertenece"],
+    [[20], "No pertenece"],
+    [[16], "No pertenece"],
+    [[28], "Pertenece"],
+], 'en_medio', 't4-')
+def califica_en_medio(f, uuid, deseo_ayudar):
+    return f
+
+
+@template_iterable([
+    [[10000, 'Educación'], '8%'],
+    [[15000, 'Educación'], '10%'],
+    [[25000, 'Educación'], '10%'],
+    [[10000, 'Ganadería'], '8%'],
+    [[15000, 'Ganadería'], '10%'],
+    [[25000, 'Ganadería'], '10%'],
+    [[10000, 'Textiles'], '12%'],
+    [[15000, 'Textiles'], '14%'],
+    [[25000, 'Textiles'], '14%'],
+    [[10000, 'Tecnología'], '12%'],
+    [[15000, 'Tecnología'], '14%'],
+    [[25000, 'Tecnología'], '14%'],
+], 'impuestos', 't4-')
+def califica_impuestos(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+    [[5.5], 'Pasaste'],
+    [[5.6], 'Pasaste'],
+    [[10], 'Pasaste'],
+    [[4.6], 'Prueba de nuevo'],
+    [[5.4], 'Prueba de nuevo'],
+], 'calificacion_aprobatoria', 't4-')
+def califica_calificacion_aprobatoria(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+    [[1.40], "Puede subir :D"],
+    [[1.23], "No puede subir :("],
+    [[1.80], "Puede subir :D"]
+], 'puede_subir', 't4-')
+def califica_puede_subir(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+    [[1,2,3], "Escaleno"],
+    [[3,3,3], "Equilátero"],
+    [[1,2,2], "Isósceles"],
+], 'tipo_de_triangulo', 't4-')
+def califica_tipo_de_triangulo(f, uuid, deseo_ayudar):
+    return f

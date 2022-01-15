@@ -6,3 +6,5 @@ README.md
 __pycache__
 .pytest_cache
 .ipynb_checkpoints
+.gitignore
+total_ejercicios.txt
