@@ -84,20 +84,7 @@ def helper(resultados, tarea, nombre, uuid, **kwargs):
             print("======> Casos existosos: <======\n")
             
             for resultado in aciertos_arr:
-                if len(resultado['argumentos']) == 1:
-                    print(f"Valores de entrada: {resultado['argumentos'][0]}. \
-                    Valor esperado: {resultado['esperado']}. \
-                    Valor obtenido: {resultado['obtenido']}\n")
-                else:
-                    print(f"Valores de entrada: {resultado['argumentos']}. \
-                    Valor esperado: {resultado['esperado']}. \
-                    Valor obtenido: {resultado['obtenido']}\n")
-             
-            if errores == 0:
-                print("======> No hubo errores :D <======\n")
-            else:
-                print("======> Casos con error <======\n")
-                for resultado in errores_arr:
+                if resultado['argumentos']:
                     if len(resultado['argumentos']) == 1:
                         print(f"Valores de entrada: {resultado['argumentos'][0]}. \
                         Valor esperado: {resultado['esperado']}. \
@@ -106,7 +93,29 @@ def helper(resultados, tarea, nombre, uuid, **kwargs):
                         print(f"Valores de entrada: {resultado['argumentos']}. \
                         Valor esperado: {resultado['esperado']}. \
                         Valor obtenido: {resultado['obtenido']}\n")
-
+                else:
+                    print(f"Valores de entrada: N/A. \
+                    Valor esperado: {resultado['esperado']}. \
+                    Valor obtenido: {resultado['obtenido']}\n")
+             
+            if errores == 0:
+                print("======> No hubo errores :D <======\n")
+            else:
+                print("======> Casos con error <======\n")
+                for resultado in errores_arr:
+                    if resultado['argumentos']:
+                        if len(resultado['argumentos']) == 1:
+                            print(f"Valores de entrada: {resultado['argumentos'][0]}. \
+                            Valor esperado: {resultado['esperado']}. \
+                            Valor obtenido: {resultado['obtenido']}\n")
+                        else:
+                            print(f"Valores de entrada: {resultado['argumentos']}. \
+                            Valor esperado: {resultado['esperado']}. \
+                            Valor obtenido: {resultado['obtenido']}\n")
+                    else:
+                        print(f"Valores de entrada: N/A. \
+                        Valor esperado: {resultado['esperado']}. \
+                        Valor obtenido: {resultado['obtenido']}\n")
             if kwargs['deseo']:
                 opinion = deseo_ayudar()
             resultados = list(map(convertir_a_tupla, resultados))
