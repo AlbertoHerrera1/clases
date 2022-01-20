@@ -118,6 +118,8 @@ def helper(resultados, tarea, nombre, uuid, **kwargs):
                         Valor obtenido: {resultado['obtenido']}\n")
             if kwargs['deseo']:
                 opinion = deseo_ayudar()
+            else:
+                opinion = None
             resultados = list(map(convertir_a_tupla, resultados))
             if prod:
                 mandar_a_firestore(uuid, tarea+nombre, calificacion, resultados, opinion, tarea)

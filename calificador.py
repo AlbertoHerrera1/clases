@@ -338,7 +338,7 @@ def califica_primer_letra(f, uuid, deseo_ayudar):
 
 @template_iterable([
         [["Esta",], 't'],
-        [["'t2-'",], 'e'],
+        [["'t2-'",], '2'],
         [["está",], 't'],
         [["curiosa",], 's'],
         [["eso de",], 'd'],
