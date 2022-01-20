@@ -185,7 +185,7 @@ def template_iterable(lista, nombre, tarea):
         [["tareas"], 't'],
         [["están"], 'e'],
         [["geniales"], 'g']
-    ], 'primer_letra', tarea)
+    ], 'primer_caracter', tarea)
     """
     def decoradora(funcion):
         def contenedora(f, uuid, deseo_ayudar):

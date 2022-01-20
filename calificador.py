@@ -156,6 +156,26 @@ def califica_multiplicacion(f, uuid, deseo_ayudar):
             break
     helper(resultados, 't2-', 'multiplicacion', uuid, error=error, deseo=deseo_ayudar, excepcion=excepcion)
 
+def califica_division(f, uuid, deseo_ayudar):
+    error = False
+    resultados = []
+    excepcion = None
+    for i in range(1, 4):
+        for j in range(1, 6):
+            try:
+                resultado_resta = f(i, j)
+                resultado_real = i / j
+                estado = resultado_real==resultado_resta
+                resultados.append(Resultado((i, j), resultado_real, resultado_resta, estado).__dict__)
+            except Exception as e:
+                mensaje_error(e)
+                error = True
+                excepcion = str(e)
+                break
+        if error:
+            break
+    helper(resultados, 't2-', 'division', uuid, error=error, deseo=deseo_ayudar, excepcion=excepcion)
+
 
 def califica_division_cuidadosa(f, uuid, deseo_ayudar):
     error = False
@@ -175,7 +195,7 @@ def califica_division_cuidadosa(f, uuid, deseo_ayudar):
                 break
         if error:
             break
-    helper(resultados, 't2-', 'division', uuid, error=error, deseo=deseo_ayudar, excepcion=excepcion)
+    helper(resultados, 't2-', 'division-cuidadosa', uuid, error=error, deseo=deseo_ayudar, excepcion=excepcion)
 
 def califica_al_cuadrado(f, uuid, deseo_ayudar):
     error = False
@@ -186,7 +206,7 @@ def califica_al_cuadrado(f, uuid, deseo_ayudar):
             resultado_resta = f(j)
             resultado_real = j ** 2
             estado = resultado_real==resultado_resta
-            resultados.append(Resultado((j), resultado_real, resultado_resta, estado).__dict__)
+            resultados.append(Resultado((j,), resultado_real, resultado_resta, estado).__dict__)
         except Exception as e:
             mensaje_error(e)
             error = True
@@ -247,7 +267,7 @@ def califica_resta_menos_veinte(f, uuid, deseo_ayudar):
             try:
                 resultado_resta = f(i, j)
                 resultado_intermedio = j - i
-                resultado_real = resultado_intermedio + 20
+                resultado_real = resultado_intermedio - 20
                 estado = resultado_real==resultado_resta
                 resultados.append(Resultado((i, j), resultado_real, resultado_resta, estado).__dict__)
             except Exception as e:
@@ -329,16 +349,16 @@ def califica_en_minusculas(f, uuid, deseo_ayudar):
         [["este"], 'e'],
         [["curso"], 'c'],
         [["y las"], 'y'],
-        [["'t2-'s"], 't'],
+        [["'t2-'s"], '\''],
         [["están"], 'e'],
         [["geniales"], 'g']
-    ], 'primer_letra', 't2-')
-def califica_primer_letra(f, uuid, deseo_ayudar):
+    ], 'primer_caracter', 't2-')
+def califica_primer_caracter(f, uuid, deseo_ayudar):
     return f
 
 @template_iterable([
         [["Esta",], 't'],
-        [["'t2-'",], '2'],
+        [["'t2-'",], '-'],
         [["está",], 't'],
         [["curiosa",], 's'],
         [["eso de",], 'd'],
@@ -347,8 +367,8 @@ def califica_primer_letra(f, uuid, deseo_ayudar):
         [["negativos",], 'o'],
         [["es",], 'e'],
         [["nuevo",], 'v']
-    ], 'penultima_letra', 't2-')
-def califica_penultima_letra(f, uuid, deseo_ayudar):
+    ], 'penultimo_caracter', 't2-')
+def califica_penultimo_caracter(f, uuid, deseo_ayudar):
     return f
 
 @template_iterable([
