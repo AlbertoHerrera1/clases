@@ -33,14 +33,25 @@ def mandar_a_firestore(uuid, ejercicio, calificacion, resultados, opinion, tarea
         print(f"============> Calificación recibida, puedes continuar <============\n")
 
 def deseo_ayudar():
-    return int(input("""
+    while True:
+        entrada = (input("""
         ========================================================
         || Del 0 al 5, donde 0 es no me sirvió en lo absoluto ||
         || y 5 es me sirvió muchísimo                         ||
         || ¿Qué tanto te sirvió este ejercicio?:              ||
         ========================================================
-    """))
-    
+        """))
+        try:
+            numero = int(entrada)
+            if numero > 5:
+                print("Que entusiasta! Gracias! :D")
+            elif numero < 0:
+                print("¿De verdad no te gustó? :(")
+            return numero
+        except:
+            print("Me diste algo que no es un número")
+
+
 def convertir_a_tupla(r):
     esperado = r['esperado']
     obtenido = r['obtenido']
