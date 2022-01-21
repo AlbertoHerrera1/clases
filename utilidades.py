@@ -15,7 +15,7 @@ def mandar_a_firestore(uuid, ejercicio, calificacion, resultados, opinion, tarea
     resp = requests \
         .post("https://us-central1-cursos-mios-01.cloudfunctions.net/calificar", \
         json={"uuid": uuid, \
-        "curso": "pythondelaaalaz-vespertino", \
+        "curso": "pythondelaaalaz", \
         "ejercicio": ejercicio, \
         "tarea": f'{tarea}', \
         "calificacion": calificacion, \
@@ -24,9 +24,10 @@ def mandar_a_firestore(uuid, ejercicio, calificacion, resultados, opinion, tarea
         "opinion": opinion \
         })
     if resp.status_code != 200:
-        print("""
+        print(f"""
             Hubo un error inesperado del lado del servidor, por favor
             revisa si tu calificación fue agregada.
+            Error {resp.json()}
         """)
     if resp.status_code == 200:
         print(f"============> Calificación recibida <============\n")
