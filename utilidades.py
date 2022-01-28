@@ -30,7 +30,7 @@ def mandar_a_firestore(uuid, ejercicio, calificacion, resultados, opinion, tarea
             Error {resp.json()}
         """)
     if resp.status_code == 200:
-        print(f"============> Calificación recibida, puedes continuar <============\n")
+        print(f"============> Calificación recibida <============\n")
 
 def deseo_ayudar():
     while True:
