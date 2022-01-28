@@ -641,6 +641,7 @@ def califica_insertar_elementos_en_una_posicion(f, uuid, deseo_ayudar):
     [[[1,2,3,4,5,6,7,8,9], 2], [1,2,4,5,6,7,8,9]],
     [[[1,2,3,4,5,6,7,8,9], 3], [1,2,3,5,6,7,8,9]],
     [[[1,2,3,4,5,6,7,8,9], 4], [1,2,3,4,6,7,8,9]],
+    [[[1,2,3,4,5,6,7,8,9], 5], [1,2,3,4,5,7,8,9]],
 ], 'borrar_elemento_por_indice', 't4-')
 def califica_borrar_elemento_por_indice(f, uuid, deseo_ayudar):
     return f
