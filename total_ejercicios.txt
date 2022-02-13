@@ -5,3 +5,5 @@ Tarea 2: 25
 Tarea 3: 10
 
 Tarea 4: 32
+
+Tarea 5: 8

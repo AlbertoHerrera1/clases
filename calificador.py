@@ -859,8 +859,8 @@ def califica_contar_vocales_y_numeros(f, uuid, deseo_ayudar):
     [[{"alumnos": [5, 10, 5, 10]}], 7.5],
     [[{"alumnos": [8, 7, 6, 5, 10]}], 7.2],
     [[{"alumnos": [2, .5, 10, 10, 10]}], 6.5],
-], 'obtener_promedio', 't5-')
-def califica_obtener_promedio(f, uuid, deseo_ayudar):
+], 'obtener_promedio2', 't5-')
+def califica_obtener_promedio2(f, uuid, deseo_ayudar):
     return f
 
 @template_iterable([
