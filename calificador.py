@@ -384,7 +384,7 @@ def califica_concatenar_cadenas(f, uuid, deseo_ayudar):
     [[54], 529.74],
     [[98], 961.38],
     [[8.3], 81.42300000000002],
-], 'peso_de_un_cuerpo', 't2-')
+], 'peso_de_un_cuerpo', 't3-')
 def califica_peso_de_un_cuerpo(f, uuid, deseo_ayudar):
     return f
 
@@ -394,7 +394,7 @@ def califica_peso_de_un_cuerpo(f, uuid, deseo_ayudar):
     [[89, 23], 3.869565217391304],
     [[1567, 1268], 1.2358044164037856],
     [[45, 87], 0.5172413793103449],
-], 'calculo_de_velocidad_constante', 't2-')
+], 'calculo_de_velocidad_constante', 't3-')
 def califica_calculo_de_velocidad_constante(f, uuid, deseo_ayudar):
     return f
 
@@ -404,7 +404,7 @@ def califica_calculo_de_velocidad_constante(f, uuid, deseo_ayudar):
     [[45, 89, 78], 6987],
     [[487, 65, 10], 1137],
     [[1000, 10, 10], 1100],
-], 'calculo_de_velocidad_con_aceleracion', 't2-')
+], 'calculo_de_velocidad_con_aceleracion', 't3-')
 def califica_calculo_de_velocidad_con_aceleracion(f, uuid, deseo_ayudar):
     return f
 
@@ -413,7 +413,7 @@ def califica_calculo_de_velocidad_con_aceleracion(f, uuid, deseo_ayudar):
     [[10, 20, 120, 5], 38410.0],
     [[20, 30, 180, 100], 1625420.0],
     [[0, 5, 30, 5], 2400.0],
-], 'calculo_de_posicion_de_un_cuerpo_en_movimiento_con_aceleracion_constante', 't2-')
+], 'calculo_de_posicion_de_un_cuerpo_en_movimiento_con_aceleracion_constante', 't3-')
 def califica_calculo_de_posicion_de_un_cuerpo_en_movimiento_con_aceleracion_constante(f, uuid, deseo_ayudar):
     return f
 
@@ -423,7 +423,7 @@ def califica_calculo_de_posicion_de_un_cuerpo_en_movimiento_con_aceleracion_cons
     [[65.0, 1.65, 150.0, 1.50, 83.0, 1.62], 40.722685977705304],
     [[30.0, 1.30, 87.0, 1.80, 40.0, 1.32], 22.52005742681733],
     [[85.0, 1.80, 67.0, 1.40, 80.0, 1.56], 31.097117055603018],
-], 'promedio_inidice_masa_corporal', 't2-')
+], 'promedio_inidice_masa_corporal', 't3-')
 def califica_promedio_inidice_masa_corporal(f, uuid, deseo_ayudar):
     return f
 ####################################################################################################
