@@ -330,36 +330,6 @@ def califica_en_minusculas(f, uuid, deseo_ayudar):
     return f
 
 @template_iterable([
-        [["Hola"], 'H'],
-        [["mundo",], 'm'],
-        [["me"], 'm'],
-        [["gusta"], 'g'],
-        [["este"], 'e'],
-        [["curso"], 'c'],
-        [["y las"], 'y'],
-        [["'t2-'s"], '\''],
-        [["están"], 'e'],
-        [["geniales"], 'g']
-    ], 'primer_caracter', 't2-')
-def califica_primer_caracter(f, uuid, deseo_ayudar):
-    return f
-
-@template_iterable([
-        [["Esta",], 't'],
-        [["'t2-'",], '-'],
-        [["está",], 't'],
-        [["curiosa",], 's'],
-        [["eso de",], 'd'],
-        [["usar",], 'a'],
-        [["índices",], 'e'],
-        [["negativos",], 'o'],
-        [["es",], 'e'],
-        [["nuevo",], 'v']
-    ], 'penultimo_caracter', 't2-')
-def califica_penultimo_caracter(f, uuid, deseo_ayudar):
-    return f
-
-@template_iterable([
         [[1,2,3], "a = 1, b = 2 y c = 3"],
         [[4,5,6], "a = 4, b = 5 y c = 6"],
         [[7,8,9], "a = 7, b = 8 y c = 9"],
@@ -377,6 +347,10 @@ def califica_mostrar_numeros(f, uuid, deseo_ayudar):
     ], 'concatenar_cadenas', 't2-')
 def califica_concatenar_cadenas(f, uuid, deseo_ayudar):
     return f
+
+####################################################################################################
+#                                       Tarea 3
+####################################################################################################
 
 @template_iterable([
     [[10], 98.10000000000001],
@@ -426,6 +400,77 @@ def califica_calculo_de_posicion_de_un_cuerpo_en_movimiento_con_aceleracion_cons
 ], 'promedio_inidice_masa_corporal', 't3-')
 def califica_promedio_inidice_masa_corporal(f, uuid, deseo_ayudar):
     return f
+
+@template_iterable([
+        [["Hola"], 'H'],
+        [["mundo",], 'm'],
+        [["me"], 'm'],
+        [["gusta"], 'g'],
+        [["este"], 'e'],
+        [["curso"], 'c'],
+        [["y las"], 'y'],
+        [["'t2-'s"], '\''],
+        [["están"], 'e'],
+        [["geniales"], 'g']
+    ], 'primer_caracter', 't3-')
+def califica_primer_caracter(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+        [["Esta",], 't'],
+        [["'t2-'",], '-'],
+        [["está",], 't'],
+        [["curiosa",], 's'],
+        [["eso de",], 'd'],
+        [["usar",], 'a'],
+        [["índices",], 'e'],
+        [["negativos",], 'o'],
+        [["es",], 'e'],
+        [["nuevo",], 'v']
+    ], 'penultimo_caracter', 't3-')
+def califica_penultimo_caracter(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+    [["Hola", "Hola"], "Son iguales"],
+    [['Hola', 'Hola'], "Son iguales"],
+    [["Hola", "hola"], "Son diferentes"],
+    [["Mi nombre es:", "Mi nombre es"], "Son diferentes"],
+    [["Tengo ... años", "Tengo --- años"], "Son diferentes"],
+], 'son_iguales', 't3-')
+def califica_son_iguales(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+    [[17], "Eres menor de edad"],
+    [[18], "Eres mayor de edad"],
+    [[12], "Eres menor de edad"],
+    [[81], "Eres mayor de edad"],
+    [[99], "Eres mayor de edad"],
+], 'mayor_de_edad', 't3-')
+def califica_mayor_de_edad(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+    [[3,2], "El primero es mayor"],
+    [[29834,209], "El primero es mayor"],
+    [[1,2], "El segundo es mayor"],
+    [[89,89], "Son iguales"],
+    [[2,2], "Son iguales"],
+], 'es_mayor', 't3-')
+def califica_es_mayor(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+    [[21], "Pertenece"],
+    [[30], "Pertenece"],
+    [[20], "No pertenece"],
+    [[16], "No pertenece"],
+    [[28], "Pertenece"],
+], 'en_medio', 't3-')
+def califica_en_medio(f, uuid, deseo_ayudar):
+    return f
+
 ####################################################################################################
 #                                       Tarea 4
 ####################################################################################################
@@ -723,16 +768,6 @@ def califica_obtener_promedio(f, uuid, deseo_ayudar):
 ####################################################################################################
 
 @template_iterable([
-    [["Hola", "Hola"], "Son iguales"],
-    [['Hola', 'Hola'], "Son iguales"],
-    [["Hola", "hola"], "Son diferentes"],
-    [["Mi nombre es:", "Mi nombre es"], "Son diferentes"],
-    [["Tengo ... años", "Tengo --- años"], "Son diferentes"],
-], 'son_iguales', 't3-')
-def califica_son_iguales(f, uuid, deseo_ayudar):
-    return f
-
-@template_iterable([
     [[2], True],
     [[201], False],
     [[3333], False],
@@ -740,16 +775,6 @@ def califica_son_iguales(f, uuid, deseo_ayudar):
     [[209872], True],
 ], 'es_par', 't3-')
 def califica_es_par(f, uuid, deseo_ayudar):
-    return f
-
-@template_iterable([
-    [[17], "Eres menor de edad"],
-    [[18], "Eres mayor de edad"],
-    [[12], "Eres menor de edad"],
-    [[81], "Eres mayor de edad"],
-    [[99], "Eres mayor de edad"],
-], 'mayor_de_edad', 't3-')
-def califica_mayor_de_edad(f, uuid, deseo_ayudar):
     return f
 
 @template_iterable([
@@ -761,27 +786,6 @@ def califica_mayor_de_edad(f, uuid, deseo_ayudar):
 ], 'division_cuidadosa', 't3-')
 def califica_division_cuidadosa(f, uuid, deseo_ayudar):
     return f
-
-@template_iterable([
-    [[3,2], "El primero es mayor"],
-    [[29834,209], "El primero es mayor"],
-    [[1,2], "El segundo es mayor"],
-    [[89,89], "Son iguales"],
-    [[2,2], "Son iguales"],
-], 'es_mayor', 't3-')
-def califica_es_mayor(f, uuid, deseo_ayudar):
-    return f
-
-@template_iterable([
-    [[21], "Pertenece"],
-    [[30], "Pertenece"],
-    [[20], "No pertenece"],
-    [[16], "No pertenece"],
-    [[28], "Pertenece"],
-], 'en_medio', 't3-')
-def califica_en_medio(f, uuid, deseo_ayudar):
-    return f
-
 
 @template_iterable([
     [[10000, 'Educación'], '8%'],
