@@ -474,6 +474,41 @@ def califica_en_medio(f, uuid, deseo_ayudar):
 ####################################################################################################
 #                                       Tarea 4
 ####################################################################################################
+@template_iterable([
+    [[10000, 'Educación'], '8%'],
+    [[15000, 'Educación'], '10%'],
+    [[25000, 'Educación'], '10%'],
+    [[10000, 'Ganadería'], '8%'],
+    [[15000, 'Ganadería'], '10%'],
+    [[25000, 'Ganadería'], '10%'],
+    [[10000, 'Textiles'], '12%'],
+    [[15000, 'Textiles'], '14%'],
+    [[25000, 'Textiles'], '14%'],
+    [[10000, 'Tecnología'], '12%'],
+    [[15000, 'Tecnología'], '14%'],
+    [[25000, 'Tecnología'], '14%'],
+], 'impuestos', 't4-')
+def califica_impuestos(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+    [[5.5], 'Pasaste'],
+    [[5.6], 'Pasaste'],
+    [[10], 'Pasaste'],
+    [[4.6], 'Prueba de nuevo'],
+    [[5.4], 'Prueba de nuevo'],
+], 'calificacion_aprobatoria', 't4-')
+def califica_calificacion_aprobatoria(f, uuid, deseo_ayudar):
+    return f
+
+    
+@template_iterable([
+    [[1.40], "Puede subir :D"],
+    [[1.23], "No puede subir :("],
+    [[1.80], "Puede subir :D"]
+], 'puede_subir', 't4-')
+def califica_puede_subir(f, uuid, deseo_ayudar):
+    return f
 
 @template_sencillo([], 'creacion_de_lista_vacia', 't4-')
 def califica_creacion_de_lista_vacia(f, uuid, deseo_ayudar):
@@ -486,6 +521,9 @@ def califica_creacion_de_una_tupla_vacia(f, uuid, deseo_ayudar):
 @template_sencillo({}, 'creacion_de_un_diccionario_vacio', 't4-')    
 def califica_creacion_de_un_diccionario_vacio(f, uuid, deseo_ayudar):
     return f
+####################################################################################################
+#                                       Tarea 5
+####################################################################################################
 
 @template_iterable([
         ([[]], 0),
@@ -785,41 +823,6 @@ def califica_es_par(f, uuid, deseo_ayudar):
     [[1567,0], "No puedo dividir entre cero"],
 ], 'division_cuidadosa', 't3-')
 def califica_division_cuidadosa(f, uuid, deseo_ayudar):
-    return f
-
-@template_iterable([
-    [[10000, 'Educación'], '8%'],
-    [[15000, 'Educación'], '10%'],
-    [[25000, 'Educación'], '10%'],
-    [[10000, 'Ganadería'], '8%'],
-    [[15000, 'Ganadería'], '10%'],
-    [[25000, 'Ganadería'], '10%'],
-    [[10000, 'Textiles'], '12%'],
-    [[15000, 'Textiles'], '14%'],
-    [[25000, 'Textiles'], '14%'],
-    [[10000, 'Tecnología'], '12%'],
-    [[15000, 'Tecnología'], '14%'],
-    [[25000, 'Tecnología'], '14%'],
-], 'impuestos', 't3-')
-def califica_impuestos(f, uuid, deseo_ayudar):
-    return f
-
-@template_iterable([
-    [[5.5], 'Pasaste'],
-    [[5.6], 'Pasaste'],
-    [[10], 'Pasaste'],
-    [[4.6], 'Prueba de nuevo'],
-    [[5.4], 'Prueba de nuevo'],
-], 'calificacion_aprobatoria', 't3-')
-def califica_calificacion_aprobatoria(f, uuid, deseo_ayudar):
-    return f
-
-@template_iterable([
-    [[1.40], "Puede subir :D"],
-    [[1.23], "No puede subir :("],
-    [[1.80], "Puede subir :D"]
-], 'puede_subir', 't3-')
-def califica_puede_subir(f, uuid, deseo_ayudar):
     return f
 
 @template_iterable([
