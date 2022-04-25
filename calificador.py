@@ -526,11 +526,19 @@ def califica_creacion_de_un_diccionario_vacio(f, uuid, deseo_ayudar):
 ####################################################################################################
 
 @template_iterable([
+    [[1,2,3], "Escaleno"],
+    [[3,3,3], "Equilátero"],
+    [[1,2,2], "Isósceles"],
+], 'tipo_de_triangulo', 't5-')
+def califica_tipo_de_triangulo(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
         ([[]], 0),
         ([[1,2,3]], 3),
         ([[1,2,3,4,5,6,7,8,9,10]], 10),
         ([list(range(100))], 100)
-    ], 'obtener_longitu_de_una_lista', 't4-')
+    ], 'obtener_longitu_de_una_lista', 't5-')
 def califica_obtener_longitud_de_una_lista(f, uuid, deseo_ayudar):
     return f
 
@@ -539,7 +547,7 @@ def califica_obtener_longitud_de_una_lista(f, uuid, deseo_ayudar):
         ([(1,2,3)], 3),
         ([(1,2,3,4,5,6,7,8,9,10)], 10),
         ([tuple(range(100))], 100)
-    ], 'obtener_longitud_de_una_tupla', 't4-')
+    ], 'obtener_longitud_de_una_tupla', 't5-')
 def califica_obtener_longitud_de_una_tupla(f, uuid, deseo_ayudar):
     return f
 
@@ -549,7 +557,7 @@ def califica_obtener_longitud_de_una_tupla(f, uuid, deseo_ayudar):
         ([{"Uno": 1,"Dos": 2, "Tres": 3}], 3),
         ([{"Dia": "Martes"}], 1),
         ([{"Curso": "Python de la a a la z", "Fecha": "17 de enero"}], 2)
-    ], 'obtener_longitud_de_un_diccionario', 't4-')
+    ], 'obtener_longitud_de_un_diccionario', 't5-')
 def califica_obtener_longitud_de_un_diccionario(f, uuid, deseo_ayudar):
     return f
 
@@ -558,7 +566,7 @@ def califica_obtener_longitud_de_un_diccionario(f, uuid, deseo_ayudar):
         ([{"Uno": 1,"Dos": 2, "Tres": 3}], [{"Uno": 1,"Dos": 2, "Tres": 3}]),
         ([{"Dia": "Martes"}], [{"Dia": "Martes"}]),
         ([{"Curso": "Python de la a a la z", "Fecha": "17 de enero"}], [{"Curso": "Python de la a a la z", "Fecha": "17 de enero"}])
-    ], 'creacion_de_una_lista_con_exactamente_un_elemento', 't4-')
+    ], 'creacion_de_una_lista_con_exactamente_un_elemento', 't5-')
 def califica_creacion_de_una_lista_con_exactamente_un_elemento(f, uuid, deseo_ayudar):
     return f
 
@@ -567,18 +575,20 @@ def califica_creacion_de_una_lista_con_exactamente_un_elemento(f, uuid, deseo_ay
         ([{"Uno": 1,"Dos": 2, "Tres": 3}], ({"Uno": 1,"Dos": 2, "Tres": 3},)),
         ([{"Dia": "Martes"}], ({"Dia": "Martes"},)),
         ([{"Curso": "Python de la a a la z", "Fecha": "17 de enero"}], ({"Curso": "Python de la a a la z", "Fecha": "17 de enero"},))
-    ], 'creacion_de_una_tupla_con_exactamente_un_elemento', 't4-')
+    ], 'creacion_de_una_tupla_con_exactamente_un_elemento', 't5-')
 def califica_creacion_de_una_tupla_con_exactamente_un_elemento(f, uuid, deseo_ayudar):
     return f
 
 @template_iterable([
         ([27], {'edad': 27}), 
         ([60], {'edad': 60}) 
-    ], 'creacion_de_un_diccionario_con_clave_edad', 't4-')
+    ], 'creacion_de_un_diccionario_con_clave_edad', 't5-')
 def califica_creacion_de_un_diccionario_con_clave_edad(f, uuid, deseo_ayudar):
     return f
 
-
+####################################################################################################
+#                                       Tarea 6
+####################################################################################################
 @template_sencillo(['a', 'b', 'c'], 'creacion_de_una_lista_con_tres_elementos', 't4-')
 def califica_creacion_de_una_lista_con_tres_elementos(f, uuid, deseo_ayudar):
     return f
@@ -825,13 +835,7 @@ def califica_es_par(f, uuid, deseo_ayudar):
 def califica_division_cuidadosa(f, uuid, deseo_ayudar):
     return f
 
-@template_iterable([
-    [[1,2,3], "Escaleno"],
-    [[3,3,3], "Equilátero"],
-    [[1,2,2], "Isósceles"],
-], 'tipo_de_triangulo', 't3-')
-def califica_tipo_de_triangulo(f, uuid, deseo_ayudar):
-    return f
+
 
 ####################################################################################################
 #                              Tarea 5 (tarea 4 ya que la uno no fue tarea)
