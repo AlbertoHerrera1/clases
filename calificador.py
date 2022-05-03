@@ -589,11 +589,11 @@ def califica_creacion_de_un_diccionario_con_clave_edad(f, uuid, deseo_ayudar):
 ####################################################################################################
 #                                       Tarea 6
 ####################################################################################################
-@template_sencillo(['a', 'b', 'c'], 'creacion_de_una_lista_con_tres_elementos', 't4-')
+@template_sencillo(['a', 'b', 'c'], 'creacion_de_una_lista_con_tres_elementos', 't6-')
 def califica_creacion_de_una_lista_con_tres_elementos(f, uuid, deseo_ayudar):
     return f
 
-@template_sencillo(('a', '1', 'b'), 'creacion_de_una_tupla_con_tres_elementos', 't4-')
+@template_sencillo(('a', '1', 'b'), 'creacion_de_una_tupla_con_tres_elementos', 't6-')
 def califica_creacion_de_una_tupla_con_tres_elementos(f, uuid, deseo_ayudar):
     return f
 
@@ -601,7 +601,7 @@ def califica_creacion_de_una_tupla_con_tres_elementos(f, uuid, deseo_ayudar):
     [[[1,2,3,4,5,6]], 6],
     [[['a', 'b', 'c', 'd', 'e', 'f']], 'f'],
     [[[10, 11, 12, 13, 14, 15, 16, 17]], 15]
-], 'acceder_al_elemento_5', 't4-')
+], 'acceder_al_elemento_5', 't6-')
 def califica_acceder_al_elemento_5(f, uuid, deseo_ayudar):
     return f
 
@@ -609,18 +609,18 @@ def califica_acceder_al_elemento_5(f, uuid, deseo_ayudar):
             [[27], 26], 
             [[60], 59],
             [[101], 100],
-        ], 'acceder_al_ultimo_elemento_de_una_tupla_en_rango', 't4-')
+        ], 'acceder_al_ultimo_elemento_de_una_tupla_en_rango', 't6-')
 def califica_acceder_al_ultimo_elemento_de_una_tupla_en_rango(f, uuid, deseo_ayudar):
         return f
 
 
-@template_sencillo({1,2,3,4,5}, 'conjunto_con_elementos_del_1_al_5', 't4-')
+@template_sencillo({1,2,3,4,5}, 'conjunto_con_elementos_del_1_al_5', 't6-')
 def califica_conjunto_con_elementos_del_1_al_5(f, uuid, deseo_ayudar):
     return f
     
 @template_iterable([
     [['Hola', 'Aloha', 'Saludos'], {'Hola', 'Aloha', 'Saludos'}]
-], 'conjunto_con_tres_palabras', 't4-')
+], 'conjunto_con_tres_palabras', 't6-')
 def califica_conjunto_con_tres_palabras(f, uuid, deseo_ayudar):
     return f
 
@@ -631,16 +631,20 @@ def califica_conjunto_con_tres_palabras(f, uuid, deseo_ayudar):
         'curso': 'Python de la A a la Z',
         'tareas': 3
     }
-}, 'creacion_de_diccionario_dentro_de_otro_diccionario', 't4-')
+}, 'creacion_de_diccionario_dentro_de_otro_diccionario', 't6-')
 def califica_creacion_de_diccionario_dentro_de_otro_diccionario(f, uuid, deseo_ayudar):
     return f
 
 @template_sencillo([
     {"pais": "México", "nombre oficial": "Estados Unidos Mexicanos"},
     {"pais": "Estados Unidos", "nombre oficial": "Estados Unidos de América"}
-], 'creacion_de_lista_de_diccionarios', 't4-')
+], 'creacion_de_lista_de_diccionarios', 't6-')
 def califica_creacion_de_lista_de_diccionarios(f, uuid, deseo_ayudar):
     return f
+
+####################################################################################################
+#                                       Tarea 7
+####################################################################################################
 
 @template_sencillo({
         "tarea1": [
