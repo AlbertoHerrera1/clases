@@ -525,70 +525,6 @@ def califica_creacion_de_un_diccionario_vacio(f, uuid, deseo_ayudar):
 #                                       Tarea 5
 ####################################################################################################
 
-@template_sencillo({
-    'estado': 'Activo',
-    'datos': {
-        'curso': 'Python de la A a la Z',
-        'tareas': 3
-    }
-}, 'creacion_de_diccionario_dentro_de_otro_diccionario', 't5-')
-def califica_creacion_de_diccionario_dentro_de_otro_diccionario(f, uuid, deseo_ayudar):
-    return f
-
-@template_sencillo([
-    {"pais": "México", "nombre oficial": "Estados Unidos Mexicanos"},
-    {"pais": "Estados Unidos", "nombre oficial": "Estados Unidos de América"}
-], 'creacion_de_lista_de_diccionarios', 't5-')
-def califica_creacion_de_lista_de_diccionarios(f, uuid, deseo_ayudar):
-    return f
-
-@template_sencillo({
-        "tarea1": [
-            10, 10, 8
-        ],
-        "tarea2": [
-            10, 8, 7
-        ]
-    }, 'creacion_de_diccionario_con_listas', 't5-')
-def califica_creacion_de_diccionario_con_listas(f, uuid, deseo_ayudar):
-    return f
-
-@template_sencillo({
-        "historial": ((3,5,1,6), (56,2,1,7), (62,4,78,3))
-    }, 'creacion_de_diccionario_con_tuplas', 't5-')
-def califica_creacion_de_diccionario_con_tuplas(f, uuid, deseo_ayudar):
-    return f
-
-@template_iterable([
-    [['edad', 27], {'edad': 27}],
-    [['Nombre', "Pepito"], {'Nombre': 'Pepito'}],
-    [[1, 27], {1: 27}],
-    [["Calif", 100], {'Calif': 100}],
-], 'creacion_de_diccionario_a_partir_de_clave', 't5-')
-def califica_creacion_de_diccionario_a_partir_de_clave(f, uuid, deseo_ayudar):
-    return f
-
-@template_sencillo(
-    list(range(10001)), 'lista_hasta_10000', 't5-'
-)
-def califica_lista_hasta_10000(f, uuid, deseo_ayudar):
-    return f
-
-@template_iterable([
-    [[10], list(range(10))],
-    [[100], list(range(100))],
-    [[110], list(range(110))],
-    [[2], list(range(2))],
-    [[3], list(range(3))],
-], 'lista_en_rango', 't5-')
-def califica_lista_en_rango(f, uuid, deseo_ayudar):
-    return f
-
-####################################################################################################
-#                                       Tarea 6
-####################################################################################################
-
-
 @template_iterable([
     [[1,2,3], "Escaleno"],
     [[3,3,3], "Equilátero"],
@@ -689,23 +625,68 @@ def califica_conjunto_con_tres_palabras(f, uuid, deseo_ayudar):
     return f
 
 
+@template_sencillo({
+    'estado': 'Activo',
+    'datos': {
+        'curso': 'Python de la A a la Z',
+        'tareas': 3
+    }
+}, 'creacion_de_diccionario_dentro_de_otro_diccionario', 't6-')
+def califica_creacion_de_diccionario_dentro_de_otro_diccionario(f, uuid, deseo_ayudar):
+    return f
 
-
-
+@template_sencillo([
+    {"pais": "México", "nombre oficial": "Estados Unidos Mexicanos"},
+    {"pais": "Estados Unidos", "nombre oficial": "Estados Unidos de América"}
+], 'creacion_de_lista_de_diccionarios', 't6-')
+def califica_creacion_de_lista_de_diccionarios(f, uuid, deseo_ayudar):
+    return f
 
 ####################################################################################################
 #                                       Tarea 7
 ####################################################################################################
 
+@template_sencillo({
+        "tarea1": [
+            10, 10, 8
+        ],
+        "tarea2": [
+            10, 8, 7
+        ]
+    }, 'creacion_de_diccionario_con_listas', 't4-')
+def califica_creacion_de_diccionario_con_listas(f, uuid, deseo_ayudar):
+    return f
 
+@template_sencillo({
+        "historial": ((3,5,1,6), (56,2,1,7), (62,4,78,3))
+    }, 'creacion_de_diccionario_con_tuplas', 't4-')
+def califica_creacion_de_diccionario_con_tuplas(f, uuid, deseo_ayudar):
+    return f
 
+@template_iterable([
+    [['edad', 27], {'edad': 27}],
+    [['Nombre', "Pepito"], {'Nombre': 'Pepito'}],
+    [[1, 27], {1: 27}],
+    [["Calif", 100], {'Calif': 100}],
+], 'creacion_de_diccionario_a_partir_de_clave', 't4-')
+def califica_creacion_de_diccionario_a_partir_de_clave(f, uuid, deseo_ayudar):
+    return f
 
+@template_sencillo(
+    list(range(10001)), 'lista_hasta_10000', 't4-'
+)
+def califica_lista_hasta_10000(f, uuid, deseo_ayudar):
+    return f
 
-
-
-
-
-
+@template_iterable([
+    [[10], list(range(10))],
+    [[100], list(range(100))],
+    [[110], list(range(110))],
+    [[2], list(range(2))],
+    [[3], list(range(3))],
+], 'lista_en_rango', 't4-')
+def califica_lista_en_rango(f, uuid, deseo_ayudar):
+    return f
 
 @template_iterable([
     [[10, 20], list(range(10, 20))],

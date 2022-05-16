@@ -219,13 +219,3 @@ def template_iterable(lista, nombre, tarea):
             helper(resultados, tarea, nombre, uuid, error=error, deseo=deseo_ayudar, excepcion=excepcion)
         return contenedora
     return decoradora 
-
-# def objects_template(atributos, metodos, nombre, tarea):
-#     def decoradora(funcion):
-#         def contenedora(f, uuid, deseo_ayudar):
-#             error = False
-#             resultados = []
-#             excepcion = None
-#             for atributo in atributos:
-#                 try:
-#                     resultado_obtenido = 
