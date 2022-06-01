@@ -587,13 +587,66 @@ def califica_lista_en_rango(f, uuid, deseo_ayudar):
 ####################################################################################################
 #                                       Tarea 6
 ####################################################################################################
+@template_iterable([
+    [[[("tacos", 300), ("enchiladas", 200), ("sopes", 150)]], 650],
+    [[[("Macbook Pro", 50), ("Macbook Air", 200), ("IPhone", 1000)]], 1250],
+    [[[("Asus ROG", 5), ("Black Shark 4 Pro", 2), ("Realme GT Neo", 3), ("Nubia Red Magic 6", 4), ("Lenovo Legion Phone Duel 2", 1)]], 15],
+    [[[("Sony MDR", 28), ("Cheelom", 34), ("Dinden", 3)]], 65],
+    [[[("XYZ", 278), ("AYX", 312), ("KJO", 123)]], 713],
+], 'suma_totales', 't6-')
+def califica_suma_totales(f, uuid, deseo_ayudar):
+    return f
 
+@template_iterable([
+    [[10, 20], [10, 12, 14, 16, 18, 20]],
+    [[100, 200], [100, 102, 104, 106, 108, 110, 112, 114, 116, 118, 120, 122, 124, 126, 128, 130, 132, 134, 136, 138, 140, 142, 144, 146, 148, 150, 152, 154, 156, 158, 160, 162, 164, 166, 168, 170, 172, 174, 176, 178, 180, 182, 184, 186, 188, 190, 192, 194, 196, 198, 200]],
+    [[1, 2], [2]],
+    [[2, 4], [2, 4]],
+    [[3, 100], [4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100]],
+], 'pares_en_rango', 't6-')
+def califica_pares_en_rango(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+    [[[1,2,3,4,5,6,7,8,9,10]], [5,10]],
+    [[[10, 20, 30, 40, 50]], [10, 20, 30, 40, 50]],
+    [[[1]], []],
+    [[[33,44,55,66,77,88,99]], [55]],
+    [[[101, 105, 104, 100]], [105, 100]],
+], 'multiplos_de_5', 't6-')
+def califica_multiplos_de_5(f, uuid, deseo_ayudar):
+    return f
+
+@template_iterable([
+    [["ae22"], (2,2)],
+    [["1bq22"], (0,3)],
+    [["aeiou"], (5,0)],
+    [["12345"], (0,5)],
+    [["12345aeiou"], (5,5)],
+], 'contar_vocales_y_numeros', 't6-')
+def califica_contar_vocales_y_numeros(f, uuid, deseo_ayudar):
+    return f
+
+
+@template_iterable([
+    [[{"alumnos": [10, 10]}], 10],
+    [[{"alumnos": [5, 10]}], 7.5],
+    [[{"alumnos": [5, 10, 5, 10]}], 7.5],
+    [[{"alumnos": [8, 7, 6, 5, 10]}], 7.2],
+    [[{"alumnos": [2, .5, 10, 10, 10]}], 6.5],
+], 'obtener_promedio2', 't6-')
+def califica_obtener_promedio2(f, uuid, deseo_ayudar):
+    return f
+
+####################################################################################################
+#                                       Tarea 7
+####################################################################################################
 
 @template_iterable([
     [[1,2,3], "Escaleno"],
     [[3,3,3], "Equilátero"],
     [[1,2,2], "Isósceles"],
-], 'tipo_de_triangulo', 't5-')
+], 'tipo_de_triangulo', 't6-')
 def califica_tipo_de_triangulo(f, uuid, deseo_ayudar):
     return f
 
@@ -602,7 +655,7 @@ def califica_tipo_de_triangulo(f, uuid, deseo_ayudar):
         ([[1,2,3]], 3),
         ([[1,2,3,4,5,6,7,8,9,10]], 10),
         ([list(range(100))], 100)
-    ], 'obtener_longitu_de_una_lista', 't5-')
+    ], 'obtener_longitu_de_una_lista', 't6-')
 def califica_obtener_longitud_de_una_lista(f, uuid, deseo_ayudar):
     return f
 
@@ -865,25 +918,8 @@ def califica_division_cuidadosa(f, uuid, deseo_ayudar):
 ####################################################################################################
 
 
-@template_iterable([
-    [["ae22"], (2,2)],
-    [["1bq22"], (0,3)],
-    [["aeiou"], (5,0)],
-    [["12345"], (0,5)],
-    [["12345aeiou"], (5,5)],
-], 'contar_vocales_y_numeros', 't5-')
-def califica_contar_vocales_y_numeros(f, uuid, deseo_ayudar):
-    return f
 
-@template_iterable([
-    [[{"alumnos": [10, 10]}], 10],
-    [[{"alumnos": [5, 10]}], 7.5],
-    [[{"alumnos": [5, 10, 5, 10]}], 7.5],
-    [[{"alumnos": [8, 7, 6, 5, 10]}], 7.2],
-    [[{"alumnos": [2, .5, 10, 10, 10]}], 6.5],
-], 'obtener_promedio2', 't5-')
-def califica_obtener_promedio2(f, uuid, deseo_ayudar):
-    return f
+
 
 @template_iterable([
     [[3], 6],
@@ -906,15 +942,7 @@ def califica_calcular_factorial(f, uuid, deseo_ayudar):
 def califica_pares_un_medio(f, uuid, deseo_ayudar):
     return f
 
-@template_iterable([
-    [[[1,2,3,4,5,6,7,8,9,10]], [5,10]],
-    [[[10, 20, 30, 40, 50]], [10, 20, 30, 40, 50]],
-    [[[1]], []],
-    [[[33,44,55,66,77,88,99]], [55]],
-    [[[101, 105, 104, 100]], [105, 100]],
-], 'multiplos_de_5', 't5-')
-def califica_multiplos_de_5(f, uuid, deseo_ayudar):
-    return f
+
 
 @template_iterable([
     [[[1,2,3,4,5,6]], (4.0, 3.0)],
@@ -926,23 +954,3 @@ def califica_multiplos_de_5(f, uuid, deseo_ayudar):
 def califica_promedios(f, uuid, deseo_ayudar):
     return f
 
-
-@template_iterable([
-    [[10, 20], [10, 12, 14, 16, 18, 20]],
-    [[100, 200], [100, 102, 104, 106, 108, 110, 112, 114, 116, 118, 120, 122, 124, 126, 128, 130, 132, 134, 136, 138, 140, 142, 144, 146, 148, 150, 152, 154, 156, 158, 160, 162, 164, 166, 168, 170, 172, 174, 176, 178, 180, 182, 184, 186, 188, 190, 192, 194, 196, 198, 200]],
-    [[1, 2], [2]],
-    [[2, 4], [2, 4]],
-    [[3, 100], [4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100]],
-], 'pares_en_rango', 't5-')
-def califica_pares_en_rango(f, uuid, deseo_ayudar):
-    return f
-
-@template_iterable([
-    [[[("tacos", 300), ("enchiladas", 200), ("sopes", 150)]], 650],
-    [[[("Macbook Pro", 50), ("Macbook Air", 200), ("IPhone", 1000)]], 1250],
-    [[[("Asus ROG", 5), ("Black Shark 4 Pro", 2), ("Realme GT Neo", 3), ("Nubia Red Magic 6", 4), ("Lenovo Legion Phone Duel 2", 1)]], 15],
-    [[[("Sony MDR", 28), ("Cheelom", 34), ("Dinden", 3)]], 65],
-    [[[("XYZ", 278), ("AYX", 312), ("KJO", 123)]], 713],
-], 'suma_totales', 't5-')
-def califica_suma_totales(f, uuid, deseo_ayudar):
-    return f
